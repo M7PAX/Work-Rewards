@@ -37,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+WRdb2.csv
+.idea/discord.xml

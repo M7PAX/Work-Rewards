@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mipax.workrewards.List">
+   <content>
+      <VBox prefWidth="798.0">
+         <children>
+            <ProgressBar prefWidth="698.0" progress="0.0">
+               <VBox.margin>
+                  <Insets bottom="25.0" />
+               </VBox.margin></ProgressBar>
+            <VBox>
+               <children>
+                  <HBox>
+                     <children>
+                        <CheckBox mnemonicParsing="false">
+                           <HBox.margin>
+                              <Insets right="5.0" top="4.0" />
+                           </HBox.margin></CheckBox>
+                        <VBox>
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Work" wrappingWidth="565.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="99-99-9999 99:99">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" top="4.0" />
+                                       </HBox.margin>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="work explained to do work explained to do work explained to do work explained to do work explained to do work explained to do work explained to do work explained to do work explained to do work explained to do" wrappingWidth="655.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="49.0" right="49.0" top="25.0" />
+         </padding>
+      </VBox>
+   </content>
+</ScrollPane>
