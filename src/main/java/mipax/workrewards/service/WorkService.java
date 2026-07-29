@@ -63,14 +63,25 @@ public class WorkService {
         return new ArrayList<>(items);
     }
 
+    private final Set<String> customCategories = new LinkedHashSet<>();
+
     public synchronized List<String> getCategories() {
-        Set<String> categorySet = new LinkedHashSet<>(List.of("Main", "New", "Daily", "Weekly", "Monthly", "Yearly"));
+        Set<String> categorySet = new LinkedHashSet<>(List.of("Main", "Daily", "Weekly", "Monthly", "Yearly"));
+        categorySet.addAll(customCategories);
         for (WorkItem item : items) {
             if (item.getCategory() != null && !item.getCategory().trim().isEmpty()) {
                 categorySet.add(item.getCategory().trim());
             }
         }
+        categorySet.removeIf("Urgent"::equalsIgnoreCase);
+        categorySet.removeIf("New"::equalsIgnoreCase);
         return new ArrayList<>(categorySet);
+    }
+
+    public synchronized void addCustomCategory(String category) {
+        if (category != null && !category.trim().isEmpty()) {
+            customCategories.add(category.trim());
+        }
     }
 
     public synchronized String generateId(String category) {

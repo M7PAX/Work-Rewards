@@ -33,6 +33,7 @@ public class AddWorkView extends VerticalLayout {
     private final TextField workInput = new TextField("Work Title");
     private final ComboBox<String> categoryComboBox = new ComboBox<>("Category");
     private final Checkbox dueDateToggle = new Checkbox("Enable Due Date");
+    private final Checkbox countdownToggle = new Checkbox("Show Due Time as Countdown");
     private final DatePicker dueDate = new DatePicker("Due Date");
     private final TimePicker dueTime = new TimePicker("Due Time");
 
@@ -66,12 +67,21 @@ public class AddWorkView extends VerticalLayout {
             categoryComboBox.setValue(customCat);
         });
 
+        dueDate.setMin(LocalDate.now());
         dueDate.setEnabled(false);
+        dueDate.addValueChangeListener(e -> {
+            if (e.getValue() != null && e.getValue().isBefore(LocalDate.now())) {
+                dueDate.setValue(LocalDate.now());
+                Notification.show("Due date cannot be in the past!");
+            }
+        });
         dueTime.setEnabled(false);
+        countdownToggle.setEnabled(false);
         dueDateToggle.addValueChangeListener(e -> {
             boolean enabled = e.getValue();
             dueDate.setEnabled(enabled);
             dueTime.setEnabled(enabled);
+            countdownToggle.setEnabled(enabled);
             if (enabled && dueDate.getValue() == null) {
                 dueDate.setValue(LocalDate.now());
             }
@@ -92,7 +102,7 @@ public class AddWorkView extends VerticalLayout {
         FormLayout formLayout = new FormLayout();
         formLayout.setWidthFull();
 
-        HorizontalLayout dueToggleLayout = new HorizontalLayout(dueDateToggle);
+        HorizontalLayout dueToggleLayout = new HorizontalLayout(dueDateToggle, countdownToggle);
         HorizontalLayout dueInputLayout = new HorizontalLayout(dueDate, dueTime);
 
         HorizontalLayout hlToggleLayout = new HorizontalLayout(hyperlinkToggle);
@@ -125,11 +135,22 @@ public class AddWorkView extends VerticalLayout {
 
         String dateStr = "00-00-00";
         String timeStr = "00:00";
-        if (dueDateToggle.getValue() && dueDate.getValue() != null) {
-            dateStr = dueDate.getValue().toString();
-        }
-        if (dueDateToggle.getValue() && dueTime.getValue() != null) {
-            timeStr = dueTime.getValue().format(DateTimeFormatter.ofPattern("HH:mm"));
+        if (dueDateToggle.getValue()) {
+            if (dueDate.getValue() == null) {
+                Notification.show("Please select a due date!");
+                return;
+            }
+            LocalDate selectedDate = dueDate.getValue();
+            LocalTime selectedTime = dueTime.getValue() != null ? dueTime.getValue() : LocalTime.of(23, 59);
+
+            java.time.LocalDateTime selectedDateTime = java.time.LocalDateTime.of(selectedDate, selectedTime);
+            if (selectedDateTime.isBefore(java.time.LocalDateTime.now())) {
+                Notification.show("Due date and time cannot be in the past!");
+                return;
+            }
+
+            dateStr = selectedDate.toString();
+            timeStr = selectedTime.format(DateTimeFormatter.ofPattern("HH:mm"));
         }
 
         String hl = hyperlinkToggle.getValue() ? hyperlinkInput.getValue() : "";
@@ -141,6 +162,7 @@ public class AddWorkView extends VerticalLayout {
         newItem.setDueTime(timeStr);
         newItem.setHyperlink(hl);
         newItem.setDescription(descriptionInput.getValue());
+        newItem.setCountdown(dueDateToggle.getValue() && countdownToggle.getValue());
 
         workService.addWork(newItem);
 

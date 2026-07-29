@@ -120,6 +120,6 @@ class WorkServiceTest {
         WorkItem item = new WorkItem(null, "Custom", "Desc", "Urgent", "2026-07-30", "12:00", "", false);
         workService.addWork(item);
 
-        assertTrue(workService.getCategories().contains("Urgent"));
+        assertFalse(workService.getCategories().contains("Urgent"));
     }
 }

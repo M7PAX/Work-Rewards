@@ -14,6 +14,7 @@ public class WorkItem {
     private String hyperlink;
     private boolean completed;
     private String completedAt;
+    private boolean countdown;
 
     public WorkItem() {
     }
@@ -120,6 +121,14 @@ public class WorkItem {
         this.completedAt = completedAt;
     }
 
+    public boolean isCountdown() {
+        return countdown;
+    }
+
+    public void setCountdown(boolean countdown) {
+        this.countdown = countdown;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -143,7 +152,8 @@ public class WorkItem {
                 dueTime != null ? dueTime : "",
                 hyperlink != null ? hyperlink : "",
                 completed ? "true" : "false",
-                completedAt != null ? completedAt : ""
+                completedAt != null ? completedAt : "",
+                countdown ? "true" : "false"
         );
     }
 
@@ -162,6 +172,7 @@ public class WorkItem {
         item.setHyperlink(row.length > 6 ? row[6] : "");
         item.completed = row.length > 7 && "true".equalsIgnoreCase(row[7]);
         item.completedAt = row.length > 8 ? row[8] : "";
+        item.countdown = row.length > 9 && "true".equalsIgnoreCase(row[9]);
         return item;
     }
 }

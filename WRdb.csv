@@ -1,1 +1,8 @@
-Main-1;gyulyugftufylk;drftyitdfktdkktd;Main;00-00-00;00:00;;true
+Main-1;Project Architecture Review;Review the overall software architecture and component layout for the new release;Main;2026-08-05;14:00;https://vaadin.com;false;;false
+Daily-1;Morning Standup Meeting;Sync up with team members regarding daily task progress;Daily;2026-07-30;09:30;https://meet.google.com;true;2026-07-29 09:35:00;false
+Weekly-1;Weekly Code Refactoring;Clean up deprecated code and optimize performance bottlenecks;Weekly;2026-08-01;17:00;https://github.com;false;;false
+New-1;Setup CI/CD Pipeline;Configure GitHub Actions for automated building and unit testing;New;2026-08-10;11:00;https://github.com/features/actions;false;;false
+Monthly-1;Monthly Financial Report;Prepare expense summary and earnings report for the month;Monthly;2026-07-31;18:00;;true;2026-07-28 16:20:00;false
+Urgent-1;Fix Critical Security Patch;Update dependent libraries to patch vulnerability CVE-2026-1001;Urgent;2026-07-29;20:00;https://cve.mitre.org;false;;false
+Main-2;asasfasf;;Main;2026-07-29;12:00;;true;2026-07-29 18:30:24;true
+Main-3;dasdasd;;Main;2026-07-29;21:00;;false;;true
