@@ -8,6 +8,7 @@ module mipax.workrewards {
     requires org.kordamp.bootstrapfx.core;
     requires com.gluonhq.charm.glisten;
     requires com.gluonhq.attach.util;
+    requires jdk.jfr;
 
     opens mipax.workrewards to javafx.fxml;
     exports mipax.workrewards;

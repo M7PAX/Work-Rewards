@@ -1,16 +1,12 @@
 package mipax.workrewards;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.SubScene;
-import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import java.awt.event.ActionEvent;
+import javafx.event.Event;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
 
 public class Tabs extends StackPane {
@@ -28,5 +24,4 @@ public class Tabs extends StackPane {
         Node node = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("list.fxml")));
         displayWork.getChildren().setAll(node);
     }
-
 }
