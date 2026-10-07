@@ -41,3 +41,4 @@ build/
 WRdb2.csv
 .idea/discord.xml
 /src/main/frontend/generated/
+/.idea
